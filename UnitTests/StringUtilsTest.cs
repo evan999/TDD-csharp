@@ -25,7 +25,20 @@ namespace UnitTests
 
             Assert.AreEqual(expectedResult, result);
 
+        }
 
+        [Test]
+
+        public void ShouldBeAbleToCountNumberOfLettersInComplexSentence()
+        {
+            var sentenceToScan = "Once is unique, twice is a coincidence, three times is a pattern.";
+            var characterToScanFor = "n";
+            var expectedResult = 5;
+            var stringUtils = new StringUtils();
+
+            int result = stringUtils.FindNumberOfOccurences(sentenceToScan, characterToScanFor);
+
+            Assert.AreEqual(expectedResult, result);
         }
     }
 }
