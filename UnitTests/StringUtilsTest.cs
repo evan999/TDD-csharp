@@ -11,6 +11,15 @@ namespace UnitTests
 
     public class StringUtilsTest
     {
+        private StringUtils _stringUtils;
+
+        [SetUp]
+
+        public void SetupStringUtilsTests()
+        {
+            _stringUtils = new StringUtils();
+        }
+
         [Test]
 
         public void ShouldBeAbleToCountNumberOfLettersInSimpleSentence()
@@ -19,9 +28,9 @@ namespace UnitTests
             var characterToScanFor = "e";
             var expectedResult = 2;
 
-            var stringUtils = new StringUtils();
+            
 
-            int result = stringUtils.FindNumberOfOccurences(sentenceToScan, characterToScanFor);
+            int result = _stringUtils.FindNumberOfOccurences(sentenceToScan, characterToScanFor);
 
             Assert.AreEqual(expectedResult, result);
 
@@ -34,11 +43,23 @@ namespace UnitTests
             var sentenceToScan = "Once is unique, twice is a coincidence, three times is a pattern.";
             var characterToScanFor = "n";
             var expectedResult = 5;
-            var stringUtils = new StringUtils();
+            
 
-            int result = stringUtils.FindNumberOfOccurences(sentenceToScan, characterToScanFor);
+            int result = _stringUtils.FindNumberOfOccurences(sentenceToScan, characterToScanFor);
 
             Assert.AreEqual(expectedResult, result);
         }
+
+        [Test]
+          
+        public void ShouldGetAnArgumentExceptionWhenCharacterToScanForIsLargerThanOneCharacter()
+        {
+            var sentenceToScan = "This test should throw an exception";
+            var characterToScanFor = "xx";
+
+            Assert.That(() => _stringUtils.FindNumberOfOccurences(sentenceToScan, characterToScanFor),
+                Throws.TypeOf<ArgumentException>());
+        }
+
     }
 }

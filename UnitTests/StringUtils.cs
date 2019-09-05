@@ -9,9 +9,15 @@ namespace UnitTests
 {
     public class StringUtils
     {
+
         public int FindNumberOfOccurences(string sentenceToScan, string characterToScanFor)
         {
-            // TODO: Implement this method
+
+            if (characterToScanFor.Length != 1)
+            {
+                throw new ArgumentException();
+            }
+
             var stringToCheckAsCharacterArray = sentenceToScan.ToCharArray();
             var characterToCheckFor = Char.Parse(characterToScanFor);
 
@@ -25,6 +31,7 @@ namespace UnitTests
                 }
             }
             return numberOfOccurrences;
+                      
         }
     }
 }
